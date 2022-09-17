@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
   } from "react-native";
 import { useDispatch } from "react-redux";
 import { deletePostThunk, updatePostThunk } from "../features/notesSlice";
@@ -18,6 +19,7 @@ export default function NotesScreenDetails() {
   const titleInputRef = useRef();
   const navigation = useNavigation();
   const params = route.params;
+  const [photoUri] = useState(params.photo);
   const [noteContact, setNoteContact] = useState(params.contact);
   const [noteType, setNoteType] = useState(params.type);
   const [noteName, setNoteName] = useState(params.name);
@@ -57,6 +59,7 @@ export default function NotesScreenDetails() {
     }
   }
 
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -94,10 +97,14 @@ export default function NotesScreenDetails() {
         </TouchableOpacity>
       </View>
 
+      <Image source={{ uri: `${photoUri}`}} 
+        style={{ height: 120, width: 120, borderRadius: 3, marginBottom: 10, marginLeft: 30, marginTop: 10 }}
+      />
+
       <Text style={styles.noteLabel} >Food Name: </Text>
       <TextInput
         style={styles.noteBody}
-        placeholder={"friend name"}
+        placeholder={"Food Name"}
         value={noteName}
         onChangeText={(text) => setNoteName(text)}
         selectionColor={"gray"}
@@ -107,7 +114,7 @@ export default function NotesScreenDetails() {
       <Text style={styles.noteLabel} >Type: </Text>
       <TextInput
         style={styles.noteBody}
-        placeholder={"friend age"}
+        placeholder={"Food Type"}
         value={noteType}
         onChangeText={(text) => setNoteType(text)}
         selectionColor={"grey"}
@@ -117,7 +124,7 @@ export default function NotesScreenDetails() {
       <Text style={styles.noteLabel} >Food Stall: </Text>
       <TextInput
         style={styles.noteBody}
-        placeholder={"friend dob"}
+        placeholder={"Food Stall"}
         value={noteStall}
         onChangeText={(text) => setNoteStall(text)}
         selectionColor={"gray"}
@@ -127,7 +134,7 @@ export default function NotesScreenDetails() {
       <Text style={styles.noteLabel} >Contact: </Text>
       <TextInput
         style={styles.noteBody}
-        placeholder={"friend contact"}
+        placeholder={"Contact Number"}
         value={noteContact}
         onChangeText={(text) => setNoteContact(text)}
         selectionColor={"gray"}
@@ -137,7 +144,7 @@ export default function NotesScreenDetails() {
       <Text style={styles.noteLabel} >Thoughts: </Text>
       <TextInput
         style={styles.noteBody}
-        placeholder={"Add your notes"}
+        placeholder={"Your Reviews"}
         value={noteBody}
         onChangeText={(text) => setNoteBody(text)}
         selectionColor={"gray"}
@@ -147,7 +154,7 @@ export default function NotesScreenDetails() {
       <Text style={styles.noteLabel} >Contributed by: </Text>
       <TextInput
         style={styles.noteBody}
-        placeholder={"friend website"}
+        placeholder={"Contributor"}
         value={username}
         onChangeText={(text) => setNoteUsername(text)}
         editable={editable}
