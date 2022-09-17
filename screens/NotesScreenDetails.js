@@ -158,7 +158,7 @@ export default function NotesScreenDetails() {
         placeholder={"Contributor"}
         value={username}
         onChangeText={(text) => setNoteUsername(text)}
-        editable={editable}
+        editable={false}
         selectionColor={"gray"}
         ref={titleInputRef}
       />
