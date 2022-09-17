@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { addNewPost } from "../features/notesSlice";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
 export default function NotesScreenAdd() {
   const navigation = useNavigation();
   const [noteBody, setNoteBody] = useState("");
@@ -24,7 +25,7 @@ export default function NotesScreenAdd() {
   const [noteStall, setNoteStall] = useState("");
   const dispatch = useDispatch();
 
-  const canSave = [noteName, noteType, noteStall, noteContact, noteBody].every(Boolean);
+  const canSave = [noteName, noteType, noteStall, noteContact, noteBody, "https://cdn-icons-png.flaticon.com/512/333/333344.png"].every(Boolean);
 
   async function savePost() {
     const username = await AsyncStorage.getItem("username");
@@ -38,6 +39,7 @@ export default function NotesScreenAdd() {
           stall: noteStall,
           contact: noteContact,
           username: username,
+          photo: "https://cdn-icons-png.flaticon.com/512/333/333344.png",
         };
         await dispatch(addNewPost(post));
       } catch (error) {
@@ -114,7 +116,7 @@ export default function NotesScreenAdd() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "aliceblue",
     paddingTop: 60,
     padding: 25,
   },
