@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   View,
   Image,
+  ScrollView
   } from "react-native";
 import { useDispatch } from "react-redux";
 import { deletePostThunk, updatePostThunk } from "../features/notesSlice";
@@ -96,7 +97,7 @@ export default function NotesScreenDetails() {
           <FontAwesome name={"trash"} size={24} color={"black"} />
         </TouchableOpacity>
       </View>
-
+      <ScrollView style={styles.scrollView}>
       <Image source={{ uri: `${photoUri}`}} 
         style={{ height: 120, width: 120, borderRadius: 3, marginBottom: 10, marginLeft: 30, marginTop: 10 }}
       />
@@ -161,6 +162,7 @@ export default function NotesScreenDetails() {
         selectionColor={"gray"}
         ref={titleInputRef}
       />
+      </ScrollView>
       <View style={{ flex: 1 }} />
       <TouchableOpacity
         style={styles.button}
@@ -175,7 +177,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "aliceblue",
-    paddingTop: 60,
+    paddingTop: 50,
     padding: 25,
   },
   noteName: {
@@ -205,7 +207,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     borderRadius: 15,
     width: "100%",
-    marginBottom: 20,
+    marginBottom: 5,
   },
   buttonText: {
     textAlign: "center",
